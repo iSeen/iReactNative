@@ -3,7 +3,7 @@ React Native, 跨平台开发 Learning ...
 
 [React Native 中文文档](http://reactnative.cn/docs/0.38/getting-started.html)
 
-## 安装
+## 环境配置
 
 1.安装 [Homebrew](http://brew.sh)
 
@@ -12,12 +12,10 @@ React Native, 跨平台开发 Learning ...
 	brew install node 
 若安装失败, 则官网下载包安装: [Node.js官网pkg](https://nodejs.org/en)  
 
-3.安装完node后建议设置npm镜像以加速后面的过程（或使用科学上网工具）
+3.Xcode 检查命令行工具是否安装:  
+Xcode | Preferences | Locations菜单中检查一下是否装有某个版本的Command Line Tools 
 
-	npm config set registry https://registry.npm.taobao.org --global
-	npm config set disturl https://npm.taobao.org/dist --global
-
-4.Yarn、React Native的命令行工具（react-native-cli）
+4.安装Yarn --React Native的命令行工具（react-native-cli）
 
 Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载。React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。
 
@@ -27,40 +25,32 @@ Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载。R
 
 	sudo chown -R `whoami` /usr/local
 
-
-5.Xcode 检查命令行工具是否安装:  
-Xcode | Preferences | Locations菜单中检查一下是否装有某个版本的Command Line Tools 
-
-
-## 推荐安装的工具
-### Watchman
+5.Watchman  
 Watchman是由Facebook提供的监视文件系统变更的工具。安装此工具可以提高开发时的性能（packager可以快速捕捉文件的变化从而实现实时刷新）
 
 	brew install watchman
 
-## 创建运行项目
-	创建项目
+## 创建项目
+#### 创建
 	react-native init iReactNative
 	
-	运行项目,三种方法:
+#### 运行  三种方法:
+	iOS
 	1.cd iReactNative
 	react-native run-ios
 	2.可以在Nuclide中打开iReactNative文件夹,然后运行;
 	3.双击ios/iReactNative.xcodeproj文件,然后在Xcode中点击Run按钮;
 	
-	To run your app on iOS:
-	cd /Users/zhang/Desktop/iReactNative
-	react-native run-ios
-	- or -
-	Open /Users/zhang/Desktop/iReactNative/ios/iReactNative.xcodeproj in Xcode
-	Hit the Run button
-	
+	Android
 	To run your app on Android:
 	Have an Android emulator running (quickest way to get started), or a device connected
 	cd /Users/zhang/Desktop/iReactNative
 	react-native run-android
 
-	
+## 把玩
+index.ios.js文件就是React-Native JS 开发之旅的入口文件, 进入进行相关修改.
+
+
 	
 ## iOS项目集成React Native
 1.Cocoapods安装:  pod所需要的库到工程 (node_modules在Pods/React下)
@@ -84,54 +74,53 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 		
 2.在工程目录下新建Components文件夹，和 index.ios.js文件(同在根目录下),并在index.ios.js文件里粘贴一下代码：
 
-    'use strict';  
-      
-    var React = require('react-native');  
-    var {  
-      AppRegistry,  
-      StyleSheet,  
-      Text,  
-      View,  
-    } = React;  
-      
-    var iReactNative = React.createClass({  
-      render: function() {  
-        return (  
-          <View style={styles.container}>  
-            <Text style={styles.welcome}>  
-              Welcome to React Native!  
-            </Text>  
-            <Text style={styles.instructions}>  
-              To get started, edit index.android.js  
-            </Text>  
-            <Text style={styles.instructions}>  
-              Shake or press menu button for dev menu  
-            </Text>  
-          </View>  
-        );  
-      }  
-    });  
-      
-    var styles = StyleSheet.create({  
-      container: {  
-        flex: 1,  
-        justifyContent: 'center',  
-        alignItems: 'center',  
-        backgroundColor: '#F5FCFF',  
-      },  
-      welcome: {  
-        fontSize: 20,  
-        textAlign: 'center',  
-        margin: 10,  
-      },  
-      instructions: {  
-        textAlign: 'center',  
-        color: '#333333',  
-        marginBottom: 5,  
-      },  
-    });  
-      
-    AppRegistry.registerComponent('iReactNative', () => iReactNative);  
+	import React, { Component } from 'react';
+	import {
+	  AppRegistry,
+	  StyleSheet,
+	  Text,
+	  View
+	} from 'react-native';
+	
+	export default class iReactNative extends Component {
+	  render() {
+	    return (
+	      <View style={styles.container}>
+	        <Text style={styles.welcome}>
+	          Welcome to React Native!
+	        </Text>
+	        <Text style={styles.instructions}>
+	          To get started, edit index.ios.js
+	        </Text>
+	        <Text style={styles.instructions}>
+	          Press Cmd+R to reload,{'\n'}
+	          Cmd+D or shake for dev menu
+	        </Text>
+	      </View>
+	    );
+	  }
+	}
+	
+	const styles = StyleSheet.create({
+	  container: {
+	    flex: 1,
+	    justifyContent: 'center',
+	    alignItems: 'center',
+	    backgroundColor: '#F5FCFF',
+	  },
+	  welcome: {
+	    fontSize: 20,
+	    textAlign: 'center',
+	    margin: 10,
+	  },
+	  instructions: {
+	    textAlign: 'center',
+	    color: '#333333',
+	    marginBottom: 5,
+	  },
+	});
+	
+	AppRegistry.registerComponent('iReactNative', () => iReactNative);
 
 以上React Native部分已经弄完.
 
@@ -143,16 +132,15 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 在ViewController.m中
 
     #import "RCTRootView.h"  
-      
 	- (void)viewDidLoad {
 	    [super viewDidLoad];
-	    
 	    [self initRNView];
 	}
 	
-	-(void)initRNView {
-	    NSURL *jsCodeLocation;
-	    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+	- (void)initRNView {
+	  NSURL *jsCodeLocation;
+	  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+	  
 	    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
 	                                                        moduleName:@"iReactNative"
 	                                                 initialProperties:nil
@@ -174,7 +162,7 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
     cd Pods/React
     npm run start
     
-<3>编写脚本文件run.sh 
+<3> 编写脚本文件run.sh 
 
     vi run.sh  
 
@@ -182,8 +170,7 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 
     #! /bin/bash  
     (cd Pods/React; npm run start)  
-
-
+    
 然后给run.sh添加可执行权限：chmod +x run.sh
 之后开启服务器时，只需要在终端输入命令： ./run.sh
 
@@ -213,4 +200,10 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 
     react-native upgrade
 
+
+
+### 常见问题: 
+1.GitHub下载需要运行安装: 下载node_modules
+
+	npm install   
 

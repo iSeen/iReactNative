@@ -17,7 +17,7 @@ export default class iReactNative extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          React Native 入门学习
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
     margin: 10,
+    color: 'red',
   },
   instructions: {
     textAlign: 'center',
