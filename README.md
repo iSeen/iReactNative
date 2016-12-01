@@ -62,7 +62,7 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 
 	
 	
-## 在已有iOS应用中集成React Native
+## iOS项目集成React Native
 1.Cocoapods安装:  pod所需要的库到工程 (node_modules在Pods/React下)
 
 	target 'iReactNative' do
@@ -82,7 +82,7 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 	
 	安装完成后，项目Target/Building Settings/ 搜索Search Paths, 找到 User Header Search Paths, 输入 $(PODS_ROOT)，选择 recursive.
 		
-3.在工程目录下新建Components文件夹，和 index.ios.js文件(同在根目录下),并在index.ios.js文件里粘贴一下代码：
+2.在工程目录下新建Components文件夹，和 index.ios.js文件(同在根目录下),并在index.ios.js文件里粘贴一下代码：
 
     'use strict';  
       
@@ -135,7 +135,7 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 
 以上React Native部分已经弄完.
 
-4.开始原生部分
+3.开始原生部分
 
 新建显示React Native的UIView:
 用来加载显示React Native的容器是 RCTRootView，它是继承自UIView;
@@ -162,7 +162,7 @@ Watchman是由Facebook提供的监视文件系统变更的工具。安装此工�
 	    [self.view addSubview:rootView];
 	}
 	
-5.运行出现提示找不到服务器，以及数据传输的安全问题;
+4.运行出现提示找不到服务器，以及数据传输的安全问题;
 <1>允许http请求: 打开info.plist文件，添加
 
 	App Transport Security Settings    -》 Dictionary
