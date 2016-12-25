@@ -3,6 +3,8 @@ React Native, 跨平台开发 Learning ...
 
 [React Native 中文文档](http://reactnative.cn/docs/0.38/getting-started.html)
 
+[ReactNative开发环境的搭建与开发前准备](http://www.toutiao.com/i6367453680316187137/?tt_from=mobile_qq&utm_campaign=client_share&app=news_article&utm_source=mobile_qq&iid=6703553715&utm_medium=toutiao_ios)
+
 ## 环境配置
 
 1.安装 [Homebrew](http://brew.sh)
